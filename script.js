@@ -6,6 +6,10 @@ function formatQueryParams(parameter) {
     return queryItems.join('&');
 }
 
+function results() {
+
+}
+
 function getParks(query, maxResults=10) {
     const parameter = {
         q: query,
@@ -17,7 +21,7 @@ function getParks(query, maxResults=10) {
 
     console.log(url);
 
-    const option = {
+    const options = {
         headers: new Headers({
             "X-Api-Key": apiKey})
     };
@@ -41,6 +45,6 @@ function submitForm() {
     const parkName = $('#js-park').val();
     const stateName = $('#state').val();
     const maxResults = $('#js-max-results').val();
-    getPark( maxResults);
+    getParks( maxResults);
     })
 }
