@@ -13,7 +13,6 @@ function results() {
 function getParks(query, maxResults=10) {
     const parameter = {
         q: query,
-        s
     };
 
     const queryString = formatQueryParams(parameter)
@@ -48,3 +47,5 @@ function submitForm() {
     getParks( maxResults);
     })
 }
+
+$(submitForm); 
