@@ -44,7 +44,7 @@ function submitForm() {
     const parkName = $('#js-park').val();
     //const stateName = $('#state').val();
     const maxResults = $('#js-max-results').val();
-    getParks( maxResults);
+    getParks(parkName, maxResults);
     })
 }
 
