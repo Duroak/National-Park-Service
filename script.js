@@ -6,8 +6,12 @@ function formatQueryParams(parameter) {
     return queryItems.join('&');
 }
 
-//function results() {
-
+//function displayResults(responseJson, maxResults) {
+    //console.log(responseJson);
+    //$('#results-list').empty();
+    //for (let i=0; i < responseJson..length & i < maxResults; i++)
+        //$('results-')
+    //$('#results').removeClass('hidden');
 //}
 
 function getParks(query, maxResults=10) {
