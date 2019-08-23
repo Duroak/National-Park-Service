@@ -1,5 +1,7 @@
 const apiKey = 'QTiE7JbAAoXVtreuFH0lmCJUp3DGImQvg8ej0ggN';
 const searchUrl = 'https://developer.nps.gov/api/v1/parks';
+const cors = 'https://cors-anywhere.herokuapp.com';
+
 
 function formatQueryParams(parameter) {
     const queryItems = Object.keys(parameter).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(parameter[key])}`)
@@ -16,11 +18,12 @@ function formatQueryParams(parameter) {
 
 function getParks(query, maxResults=10) {
     const parameter = {
+        api_key: apiKey,
         q: query,
     };
 
     const queryString = formatQueryParams(parameter)
-    const url = searchUrl + '?' + queryString;
+    const url = cors + searchUrl + '?' + queryString;
 
     console.log(url);
 
@@ -45,7 +48,7 @@ function getParks(query, maxResults=10) {
 function submitForm() {
     $('form').submit(event => {
     event.preventDefault();
-    const parkName = $('#js-park').val();
+    const parkName = $('#js-search-park').val();
     //const stateName = $('#state').val();
     const maxResults = $('#js-max-results').val();
     getParks(parkName, maxResults);
