@@ -42,7 +42,7 @@ function submitForm() {
     $('form').submit(event => {
     event.preventDefault();
     const parkName = $('#js-park').val();
-    const stateName = $('#state').val();
+    //const stateName = $('#state').val();
     const maxResults = $('#js-max-results').val();
     getParks( maxResults);
     })
