@@ -6,9 +6,9 @@ function formatQueryParams(parameter) {
     return queryItems.join('&');
 }
 
-function results() {
+//function results() {
 
-}
+//}
 
 function getParks(query, maxResults=10) {
     const parameter = {
