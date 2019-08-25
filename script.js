@@ -1,6 +1,6 @@
 const apiKey = 'QTiE7JbAAoXVtreuFH0lmCJUp3DGImQvg8ej0ggN';
 const searchUrl = 'https://developer.nps.gov/api/v1/parks';
-const cors = 'https://cors-anywhere.herokuapp.com';
+const cors = 'https://cors-anywhere.herokuapp.com/';
 
 
 function formatQueryParams(parameter) {
@@ -8,13 +8,18 @@ function formatQueryParams(parameter) {
     return queryItems.join('&');
 }
 
-//function displayResults(responseJson, maxResults) {
-    //console.log(responseJson);
-    //$('#results-list').empty();
-    //for (let i=0; i < responseJson..length & i < maxResults; i++)
-        //$('results-')
-    //$('#results').removeClass('hidden');
-//}
+function displayResults(responseJson, maxResults) {
+    console.log(responseJson);
+    $('#results-list').empty();
+    for (let i=0; i < responseJson.data.length & i < maxResults; i++) {
+        $('#results-list').append(
+            `<li><h3>${responseJson.data[i].fullName}</h3>
+            <p>${responseJson.data[i].url}</p>
+            <p>${responseJson.data[i].description}'</p>
+            </li>`
+          )};
+    $('#results').removeClass('hidden');
+}
 
 function getParks(query, maxResults=10) {
     const parameter = {
@@ -27,19 +32,14 @@ function getParks(query, maxResults=10) {
 
     console.log(url);
 
-    const options = {
-        headers: new Headers({
-            "X-Api-Key": apiKey})
-    };
-
-    fetch(url, options)
+    fetch(url)
         .then(response => {
             if (response.ok) {
                 return response.json();
             }
             throw new Error(response.statusText);
         })
-        .then(responseJson => console.log(responseJson))
+        .then(responseJson => displayResults(responseJson, maxResults))
         .catch(err => {
             $('#js-error-message').text(`Something went wrong: ${err.message}`);
         });
